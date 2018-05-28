@@ -1,5 +1,5 @@
 <?php
-require('models/model.php');
+require('models/file.class.php');
 
 $test = getFile();
 
