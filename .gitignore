@@ -1,1 +1,4 @@
-/vendor/
+vendor/
+composer.json/
+composer.lock/
+utils/db.php/
