@@ -6,43 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}{% endblock %} - Share Files</title>
-	<link rel="stylesheet" href="assets/css/style.css" />
+	<link rel="stylesheet" href="../assets/css/style.css" />
             
     {% endblock %}
 </head>
 <body>
+	
 	<header>
-		{% block header %}
-			
-		{% endblock %}
+		<div class="content">
+			{% block header %}
+				<section>
+					<article class="logo--element">
+						
+					</article>
+				</section>
+				<section>
+					
+				</section>
+			{% endblock %}
+		</div>
 	</header>
 	<nav>
-		{% block nav %}
-			
-		{% endblock %}
+		<div class="content">
+			{% block nav %}
+
+			{% endblock %}
+		</div>
 	</nav>
-	<section>
-		{% block content_1 %}
-			
-		{% endblock %}
-	</section>
-    <section>
-		{% block content_2 %}
-			
-		{% endblock %}
-	</section>
+	<div class="content">
+		<section>
+			{% block content_1 %}
+				
+			{% endblock %}
+		</section>
+	    <section>
+			{% block content_2 %}
+				
+			{% endblock %}
+		</section>
+	</div>
 	<footer>
-		{% block footer %}
-			
-		{% endblock %}
-	</footer>   
-
-
-   <p>essai</p>
-
-{% block content %} {% endblock %}
-
-    
-
+		<div class="content">
+			{% block footer %}
+				
+			{% endblock %}
+		</div>
+	</footer>
 </body>
 </html>
