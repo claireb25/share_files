@@ -1,3 +1,4 @@
 RewriteEngine On
 
-RewriteRule ^share_files$ index.php [L]
+RewriteRule ^share_files/ index.php?action=home [L]
+#RewriteRule ^(home/)$ index.php?action=$1 [L]
