@@ -1,0 +1,3 @@
+RewriteEngine On
+
+RewriteRule ^share_files$ index.php [L]
