@@ -1,7 +1,11 @@
 /vendor/
 /composer.json/
 /composer.lock/
-
+/.sass-cache/
+/scss/
+/68af7005acf3e79204718b393b9af7604e7b5985/
+/assets/stylesheets/.sass-cache/68af7005acf3e79204718b393b9af7604e7b5985/style.scssc
+/assets/stylesheets/scss/style.scss
 vendor/
 composer.json/
 composer.lock/
