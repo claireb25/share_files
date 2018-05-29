@@ -9,6 +9,6 @@ $path = implode("/", $url);
 switch($path){
     case "/share_files":
     case "/share_files/" :
-        require('controllers/ctrlHomepage.php');
+        require('controllers/ctrlHome.php');
         break;
 }
