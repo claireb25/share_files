@@ -1,2 +1,11 @@
-/* Sharing Files CSS */
-/*  Premiers pas dans le SASS */
+/* Sharing Files SCSS */
+body {
+  margin: 0px;
+  padding: 0px;
+  background: #286161;
+  font-family: "Open Sans", sans-serif; }
+
+div.content {
+  width: 80%; }
+
+/*# sourceMappingURL=style.css.map */
