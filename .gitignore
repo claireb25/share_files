@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /vendor/
 /composer.json/
 /composer.lock/
@@ -6,6 +7,8 @@
 /68af7005acf3e79204718b393b9af7604e7b5985/
 /assets/stylesheets/.sass-cache/68af7005acf3e79204718b393b9af7604e7b5985/style.scssc
 /assets/stylesheets/scss/style.scss
+=======
+>>>>>>> cbe5526e1ca5c9f05ab51318cce675c98ae79189
 vendor/
 composer.json/
 composer.lock/
