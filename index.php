@@ -8,7 +8,7 @@ if (isset($_GET['action'])){
         break;
    
         case "upload":
-            require('ctrlUpload.php');
+            require('controllers/ctrlUpload.php');
         break;
     }
 } else {
