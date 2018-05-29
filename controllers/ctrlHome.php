@@ -12,4 +12,3 @@ $twig = new Twig_Environment($loader, array(
 $template = $twig->load('homepage.html.twig');
 echo $template->render(array('test'=>$test));
 
-var_dump($_FILES);
