@@ -1,7 +1,7 @@
 <?php
 require('models/file.class.php');
 
-$test = getFile();
+// $test = getFile();
 
 require_once 'vendor/autoload.php';
 
@@ -11,3 +11,5 @@ $twig = new Twig_Environment($loader, array(
 ));
 $template = $twig->load('homepage.html.twig');
 echo $template->render(array('test'=>$test));
+
+var_dump($_FILES);

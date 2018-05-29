@@ -12,7 +12,7 @@ class File{
     }
 
     //get a file and all its infos
-    public function getFile($id_user){
+    public function getFile(){
         $db = new dbManager("share_files");
         $response = $db->getBdd()->prepare("SELECT sender_email,receiver_email,`message`,`file_name`,file_size,delete_date FROM user INNER JOIN files ON user.id = id_user WHERE user.id = :id_user");
         $response->bindParam(":id_user", $id_user, PDO::PARAM_INT);
