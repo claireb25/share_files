@@ -17,12 +17,21 @@ $template = $twig->load('homepage.html.twig');
 echo $template->render(array('test'=>$test));
 
 
+//$_FILES['file_name']['tmp_name'];
+//$_FILES['file_name']['name']; 
+//$_FILES['file_name']['type'];
+//$_FILES['file_name']['size'];
+
+
 // PHP Envoyeur Email //
 
-$_POST = ['senderEmail'];
-$senderEmail = $_POST['sender_email'];
-$point = strpos($senderEmail,".");
-$aroba = strpos($senderEmail,"@");
+$sender_email = $_POST['sender_email'];
+$point = strpos($sender_email,".");
+$aroba = strpos($sender_email,"@");
+
+if (!filter_var($sender_email, FILTER_VALIDATE_EMAIL)) {
+    $emailErr = "Invalid email format";
+  }
 
 if($point=='')
 {
@@ -34,15 +43,19 @@ echo "Votre email doit comporter un <b>'@'</b>";
 }
 else
 {
-echo "Votre email est: '<a href=\"mailto:"."$senderEmail"."\"><b>$senderEmail</b></a>'";
+echo "Votre email est: '<a href=\"mailto:"."$sender_email"."\"><b>$sender_email</b></a>'";
 } 
 
 // PHP Fin //
 
 // PHP Receveur Email //
-$receiverEmail = $_POST['receiver_email'];
-$point = strpos($receiverEmail,".");
-$aroba = strpos($receiverEmail,"@");
+$receiver_email = $_POST['receiver_email'];
+$point = strpos($receiver_email,".");
+$aroba = strpos($receiver_email,"@");
+
+if (!filter_var($receiver_email, FILTER_VALIDATE_EMAIL)) {
+    $emailErr = "Invalid email format";
+  }
 
 if($point=='')
 {
@@ -54,7 +67,7 @@ echo "Votre email doit comporter un <b>'@'</b>";
 }
 else
 {
-echo "Votre email est: '<a href=\"mailto:"."$receiverEmail"."\"><b>$receiverEmail</b></a>'";
+echo "Votre email est: '<a href=\"mailto:"."$receiver_email"."\"><b>$receiver_email</b></a>'";
 } 
 
 // PHP Fin //
