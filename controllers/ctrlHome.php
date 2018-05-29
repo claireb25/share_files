@@ -1,7 +1,7 @@
 <?php
 require('models/file.class.php');
 
-//$test = getFile();
+// $test = getFile();
 
 require_once 'vendor/autoload.php';
 
