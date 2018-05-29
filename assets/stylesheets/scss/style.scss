@@ -1,1 +1,63 @@
+@charset 'utf-8';
 /* Sharing Files SCSS */
+$main_bg: #286161;
+$black: #000000;
+$white: #ffffff;
+$red_logo: #d40000;
+// $font_logo: 'Open Sans', sans-serif;
+$main_font: 'Open Sans', sans-serif;
+
+@mixin flex($dir, $mainAlign : flex-start, $secondAlign : flex-start){
+	display: flex;
+	flex-direction: $dir;
+	justify-content: $mainAlign;
+	align-item: $secondAlign;
+}
+// reglages généraux
+body{
+	margin: 0px;
+	padding: 0px;
+	background: $main_bg;
+	font-family: $main_font;
+	@include flex(column, center);
+}
+div.content{
+	width: 80%;
+}
+
+// mobile first
+
+header{
+	width: 100%;
+	@include flex(row, center, center);
+	section{
+		width: 50%;
+		@include flex(row, flex-start, center);
+	}
+	article{
+		width: 100% / 3;
+	}
+}
+section.main--content_1{
+		width: 100%;
+		@include flex(row, center, center);
+}
+section.main--form{
+		@include flex(column, center);
+		background: $white;
+		form{
+			@include flex(column, center, center);
+			article.form-files-section{
+				@include flex(column, center);
+				height: 40%;
+			}
+			article.form-info-section{
+				@include flex(column, center);
+				height: 40%;
+			}
+			p{
+				height: 20%;
+				@include flex(row, center, center);
+			}
+		}
+}
