@@ -1,6 +1,18 @@
 {% extends 'template.html.twig' %}
-{% block content %}
-
+{% block content_1 %}
+	<section class="main--form">
+		<form action="upload" method="post" enctype="multipart/form-data">
+			<article class="form-files-section">
+				<input type="file" name="file_name">
+			</article>
+			<article class="form-info-section">
+				<input type="email" name="sender_email">
+				<input type="email" name="receiver_email">
+				<textarea name="message"></textarea>
+			</article>
+			<p><input type="submit" name=""></p>
+		</form>
+	</section>
 
 {{test.message}}
 
