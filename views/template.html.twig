@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	{% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %} - Share Files</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+	<link rel="stylesheet" href="assets/stylesheets/css/style.css" />
+            
+    {% endblock %}
+</head>
+<body>
+	
+	<header>
+		<div class="content">
+			{% block header %}
+				<section>
+					<article class="logo--element">
+						<img src="assets/medias/img/logo.svg">
+					</article>
+				</section>
+				<section>
+					
+				</section>
+			{% endblock %}
+		</div>
+	</header>
+	<nav>
+		<div class="content">
+			{% block nav %}
+
+			{% endblock %}
+		</div>
+	</nav>
+	
+	<section>
+		<div class="content">
+			{% block content_1 %}
+				
+			{% endblock %}
+		</div>
+	</section>
+    <!-- <section>
+		{% block content_2 %}
+			
+		{% endblock %}
+	</section> -->
+	
+	<footer>
+		<div class="content">
+			{% block footer %}
+				
+			{% endblock %}
+		</div>
+	</footer>
+</body>
+</html>

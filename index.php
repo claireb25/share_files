@@ -1,14 +1,16 @@
 <?php
- 
-$url = explode("/",$_SERVER['REQUEST_URI'],4);
-if (count($url)>3){
-    array_pop($url);
-}
 
-$path = implode("/", $url);
-switch($path){
-    case "/share_files":
-    case "/share_files/" :
-        require('controllers/ctrlHome.php');
+echo $_GET['action'];
+if (isset($_GET['action'])){
+    switch ($_GET['action']) { 
+        case "home":
+            require('controllers/ctrlHome.php');
         break;
+   
+        case "upload":
+            require('ctrlUpload.php');
+        break;
+    }
+} else {
+    require('controllers/ctrlHome.php');
 }
