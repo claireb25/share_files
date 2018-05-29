@@ -1,5 +1,8 @@
 <?php 
 
+
+require_once('utils/phpmailer.php');
+
 // upload file
 $uploadOk = 1;
 $file_name = $_FILES['file_name']['name'];
