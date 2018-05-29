@@ -35,18 +35,7 @@ $id_user = User::insertUser($sender_email, $receiver_email,$message);
 File::insertFile($file_name, $file_size, $id_user);
 
 
-// if ($_FILES["file_name"]["size"] > 2000000000) {
-//     echo "fichier trop lourd" ;
-//     $uploadOk = 0;
-// }
 
-// if ($uploadOk == 0) {
-//     echo "Sorry, your file was not uploaded.";
-// // if everything is ok, try to upload file
-// } 
-// else {
-   
-// }*
 require_once 'vendor/autoload.php';
 
 $loader = new Twig_Loader_Filesystem('views');

@@ -36,7 +36,7 @@ echo "Votre email est: '<a href=\"mailto:"."$senderEmail"."\"><b>$senderEmail</b
 // PHP Fin //
 
 // PHP Receveur Email //
-$receiverEmail = $_POST['receiver_email'];
+$receiver_email = $_POST['receiver_email'];
 $point = strpos($receiverEmail,".");
 $aroba = strpos($receiverEmail,"@");
 
