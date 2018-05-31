@@ -11,4 +11,5 @@ composer.json/
 composer.lock/
 models/dbManager.php/
 /models/dbManager.php/
+/nbproject/private/
 
