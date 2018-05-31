@@ -10,6 +10,4 @@ if (isset($_GET['action'])){
             require('controllers/ctrlUpload.php');
         break;
     }
-} else {
-    require('controllers/ctrlHome.php');
-}
+} 

@@ -1,10 +1,8 @@
 <?php
+
+session_start();
 require('models/file.class.php');
 
-
-
-
-// $test = getFile();
 
 
 require_once 'vendor/autoload.php';
@@ -14,6 +12,7 @@ $twig = new Twig_Environment($loader, array(
     'cache'=> false
 ));
 $template = $twig->load('homepage.html.twig');
+
 echo $template->render(array());
 
 
@@ -91,4 +90,6 @@ echo $template->render(array());
 // {
 //     echo '<p>il manque un renseignement</p>';
 // }
+echo $template->render(array('session'=>$_SESSION));
+
 
