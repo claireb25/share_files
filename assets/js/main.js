@@ -99,14 +99,15 @@ function checkEmptyField(field){
 	}	
 }
 form.addEventListener('submit', function (event){
-	event.preventDefault();
+	
 	for (let field of form){
 		let empty = checkEmptyField(field);
 		if (empty){
 			break;
+			event.preventDefault();
 		}
 	}
-	event.preventDefault();
+	
 });
 fileInput.addEventListener('change', inputFieldEvent);
 
