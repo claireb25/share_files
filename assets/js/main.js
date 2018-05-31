@@ -3,7 +3,7 @@
 // pré-validation formulaire avant envoi serveur
 
 var form = document.querySelector('#mainForm');
-var fileInput = form.querySelector('input[type=file].activeInputFile');
+var fileInput = form.querySelector('input.activeInputFile');
 const totalMaxFileSize = 2147483648;
 var totalUploadSize = 0;
 var addedFilesElt = document.querySelector('#addedFilesField');
@@ -14,7 +14,7 @@ var inputFieldFragment = document.createDocumentFragment();
 var inputElt = document.createElement('input');
 inputElt.setAttribute('type', 'file');
 inputElt.setAttribute('multiple', '');
-inputElt.setAttribute('name', 'file_name')
+inputElt.setAttribute('name', 'file_name[]')
 inputElt.classList.add('activeInputFile');
 inputFieldFragment.appendChild(inputElt);
 return inputFieldFragment;
@@ -52,7 +52,7 @@ function inputFieldEvent(event){
 		fileInput.style.display = "none";
 		fileInput.classList.toggle("activeInputFile");
 		fileInput.removeEventListener('change', inputFieldEvent);
-		fileInput = form.querySelector('input[type=file].activeInputFile');
+		fileInput = form.querySelector('input.activeInputFile');
 		fileInput.addEventListener('change', inputFieldEvent);
 	} else {
 		// traitement 2go dépassés
@@ -60,7 +60,7 @@ function inputFieldEvent(event){
 		parentElt.replaceChild(inputFieldFragment, fileInput);
 		fileInput.removeEventListener('change', inputFieldEvent);
 		// parentElt.removeChild(fileInput);
-		fileInput = form.querySelector('input[type=file].activeInputFile');
+		fileInput = form.querySelector('input.activeInputFile');
 		fileInput.addEventListener('change', inputFieldEvent);
 	}
 	// parentElt.insertBefore(inputFieldFragment, fileInput);
@@ -71,8 +71,12 @@ function inputFieldEvent(event){
 	// fileInput.addEventListener('change', inputFieldEvent);
 }
 function checkEmptyField(field){
+	if (field.name == "file_name[]"){
+		let errorFocus = form.querySelector('input.activeInputFile');
+	} else {
+		let errorFocus = form.querySelector('input[name=' + field.name + ']');
+	}
 	
-	let errorFocus = form.querySelector('input[name=' + field.name + ']');
 	if (errorFocus === null){
 			errorFocus = form.querySelector('textarea[name=' + field.name + ']');
 	}
