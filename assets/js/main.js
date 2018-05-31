@@ -56,6 +56,11 @@ function inputFieldEvent(event){
 		fileInput.addEventListener('change', inputFieldEvent);
 	} else {
 		// traitement 2go dépassés
+		parentElt.replaceChild(inputFieldFragment, fileInput);
+		fileInput.removeEventListener('change', inputFieldEvent);
+		// parentElt.removeChild(fileInput);
+		fileInput = form.querySelector('input[type=file].activeInputFile');
+		fileInput.addEventListener('change', inputFieldEvent);
 	}
 	// parentElt.insertBefore(inputFieldFragment, fileInput);
 	// fileInput.style.display = "none";
