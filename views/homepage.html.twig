@@ -9,7 +9,7 @@
 				<div id="addedFilesField"></div>
 <div id="addFileField">
 					<img src="assets/medias/img/plus_sign.svg">
-					<input type="file" multiple name="file_name" class="activeInputFile">
+					<input type="file" multiple name="file_name[]" class="activeInputFile">
 					<p>Ajouter un fichier</p>
 				</div>
 </article>
@@ -19,7 +19,7 @@
 <input type="email" placeholder="email destinataire" name="receiver_email" value="{{session.receiver_email}}">
 <textarea name="message" placeholder="Votre message">{{session.message}}</textarea>
 </article>
-<p class="submit"><input type="submit" name="submit" value="ENVOYER"></p>
+<p class="submit"><input type="submit" name="envoi" value="ENVOYER"></p>
 </form>
 </section>
 
