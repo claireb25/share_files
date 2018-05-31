@@ -6,52 +6,65 @@ $file_name = $_FILES['file_name']['name'];
 $file_size = $_FILES['file_name']['size'];
 
 
-if(isset($_FILES['file_name'])){
-    $target_dir = "assets/medias/uploads";
-    $file_name = $_FILES['file_name']['name'];
-    $import = move_uploaded_file($_FILES["file_name"]["tmp_name"], $target_dir.'/'.$file_name);
-    if($import == false)
-    { 
-        echo "non";
-    }else 
-    { 
-        echo "oui";
-    }
-}
-// upload de user 
-$sender_email = $_POST['sender_email'];
-$receiver_email = $_POST['receiver_email'];
-$message = $_POST['message'];
+// PHP Envoyeur Email //
+
+if (isset($_POST['sender_email'])&& !empty($_POST['sender_email'])
+    && isset($_POST['receiver_email'])&& !empty($_POST['receiver_email']) 
+        && isset($_POST['message']) && !empty($_POST['message'])
+            && isset($_FILES['file_name'])&& !empty($_FILES['file_name'])){
+                $sender_email = htmlspecialchars($_POST['sender_email']);
+                $receiver_email = htmlspecialchars($_POST['receiver_email']);
+                $message = htmlspecialchars($_POST['message']);
+
+    if (preg_match('#^([\w\.-]+)@([\w\.-]+)(\.[a-z]{2,4})$#',trim($_POST['sender_email']))
+        && preg_match('#^([\w\.-]+)@([\w\.-]+)(\.[a-z]{2,4})$#',trim($_POST['receiver_email']))){
 
 
-// insertion bdd
+            $target_dir = "assets/medias/uploads";
+            $file_name = $_FILES['file_name']['name'];
+            $import = move_uploaded_file($_FILES["file_name"]["tmp_name"], $target_dir.'/'.$file_name);
+            // ajout à la bdd
+            
+            
+            require("models/file.class.php");
+            require("models/user.class.php");
+            $id_user = User::insertUser($sender_email, $receiver_email,$message);
+            File::insertFile($file_name, $file_size, $id_user);
+            var_dump($id_user);
+            
+            if($import == false)
+            {
+                header('Location: /share_files');;
+                session_start();
+                $_SESSION = array(
+                "sender_email" => $_POST['sender_email'],
+                "receiver_email" => $_POST['receiver_email'],
+                "message" => $_POST['message'],
+                "file_name" => $_FILES['file_name']
+                );
+                
+            }else
+            {
+                echo "c'est tout bon";
+            }
 
-require("models/file.class.php");
-require("models/user.class.php");
+    }}
+    else {
+        header('Location: /share_files');;
+        session_start();
+        $_SESSION = array(
+        "sender_email" => $_POST['sender_email'],
+        "receiver_email" => $_POST['receiver_email'],
+        "message" => $_POST['message'],
+        "file_name" => $_FILES['file_name']
+        );
+        };
 
-$id_user = User::insertUser($sender_email, $receiver_email,$message);
+// require_once 'vendor/autoload.php';
 
-
-File::insertFile($file_name, $file_size, $id_user);
-
-
-// if ($_FILES["file_name"]["size"] > 2000000000) {
-//     echo "fichier trop lourd" ;
-//     $uploadOk = 0;
-// }
-
-// if ($uploadOk == 0) {
-//     echo "Sorry, your file was not uploaded.";
-// // if everything is ok, try to upload file
-// } 
-// else {
-   
-// }*
-require_once 'vendor/autoload.php';
-
-$loader = new Twig_Loader_Filesystem('views');
-$twig = new Twig_Environment($loader, array(
-    'cache'=> false
-));
-$template = $twig->load('homepage.html.twig');
-echo $template->render(array('test'=>$test));
+// $loader = new Twig_Loader_Filesystem('views');
+// $twig = new Twig_Environment($loader, array(
+//     'cache'=> false
+// ));
+// $template = $twig->load('homepage.html.twig');
+// echo $template->render(array('test'=>$test));
