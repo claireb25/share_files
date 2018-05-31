@@ -1,5 +1,4 @@
 RewriteEngine On
 
 RewriteRule ^(share_files)?$ index.php?action=home [L,QSA]
-RewriteRule ^(home)$ index.php?action=$1 [L,QSA]
 RewriteRule ^(upload)$ index.php?action=$1 [L,QSA]
