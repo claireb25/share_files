@@ -32,14 +32,11 @@ if (isset($_POST['sender_email'])&& !empty($_POST['sender_email'])
             File::insertFile($file_name, $file_size, $id_user);
             
             $to      = $receiver_email;
-            $subject = $sender_email . "vous a envoyé des fichiers via share files";
-            $message = 'vous a envoyé des fichiers';
-            $headers = array(
-                'From' => 'claire.b@codeur.online',
-                
-            );
+            $subject = $sender_email . " vous a envoyé des fichiers via Share Files";
+            $message = $sender_email. ' vous a envoyé des fichiers';
             
-            mail($to, $subject, $message, $headers);
+            
+            mail($to, $subject, $message);
             
             if($import == false)
             {
