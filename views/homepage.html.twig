@@ -1,3 +1,4 @@
+
 {% extends 'template.html.twig' %}
 {% block content_1 %}
 
@@ -8,9 +9,9 @@
 			</article>
 
 			<article class="form-info-section">
-				<input type="email" name="sender_email">
-				<input type="email" name="receiver_email">
-				<textarea name="message"></textarea>
+				<input type="email" name="sender_email" value="{{session.sender_email}}" >
+                <input type="email" name="receiver_email" value="{{session.receiver_email}}">
+				<textarea name="message">{{session.message}}</textarea>
 			</article>
 			<p><input type="submit" name=""></p>
 		</form>
