@@ -10,6 +10,9 @@ vendor/
 composer.json/
 composer.lock/
 models/dbManager.php/
+
+/nbproject/private/
+
 /models/dbManager.php/
 /nbproject/private/
 

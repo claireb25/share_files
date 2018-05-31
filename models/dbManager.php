@@ -4,8 +4,10 @@ class dbManager
 {
     protected $db;
     private $host = "localhost";
+
     private $login = "admin";
     private $password = "online2017";
+
  
     public function __construct($database)
     {

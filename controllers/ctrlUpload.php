@@ -47,8 +47,7 @@ if (isset($_POST['sender_email'])&& !empty($_POST['sender_email'])
                 "receiver_email" => $_POST['receiver_email'],
                 "message" => $_POST['message'],
                 "file_name" => $_FILES['file_name']
-                );
-                
+                );  
             }else
             {
                 echo "c'est tout bon";

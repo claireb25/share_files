@@ -56,6 +56,12 @@ function inputFieldEvent(event){
 		fileInput.addEventListener('change', inputFieldEvent);
 	} else {
 		// traitement 2go dépassés
+		window.alert('2go de transfert maximum!');
+		parentElt.replaceChild(inputFieldFragment, fileInput);
+		fileInput.removeEventListener('change', inputFieldEvent);
+		// parentElt.removeChild(fileInput);
+		fileInput = form.querySelector('input[type=file].activeInputFile');
+		fileInput.addEventListener('change', inputFieldEvent);
 	}
 	// parentElt.insertBefore(inputFieldFragment, fileInput);
 	// fileInput.style.display = "none";
@@ -94,14 +100,14 @@ function checkEmptyField(field){
 	}	
 }
 form.addEventListener('submit', function (event){
-	event.preventDefault();
+	
 	for (let field of form){
 		let empty = checkEmptyField(field);
 		if (empty){
 			break;
+			event.preventDefault();
 		}
-	}
-	event.preventDefault();
+	}	
 });
 fileInput.addEventListener('change', inputFieldEvent);
 
