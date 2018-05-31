@@ -10,14 +10,14 @@ var addedFilesElt = document.querySelector('#addedFilesField');
 
 //
 function inputFileGenerator(){
-var inputFieldFragment = document.createDocumentFragment();	
-var inputElt = document.createElement('input');
-inputElt.setAttribute('type', 'file');
-inputElt.setAttribute('multiple', '');
-inputElt.setAttribute('name', 'file_name[]')
-inputElt.classList.add('activeInputFile');
-inputFieldFragment.appendChild(inputElt);
-return inputFieldFragment;
+	var inputFieldFragment = document.createDocumentFragment();	
+	var inputElt = document.createElement('input');
+	inputElt.setAttribute('type', 'file');
+	inputElt.setAttribute('multiple', '');
+	inputElt.setAttribute('name', 'file_name[]')
+	inputElt.classList.add('activeInputFile');
+	inputFieldFragment.appendChild(inputElt);
+	return inputFieldFragment;
 }
 function addedFileLayout(name, size, type){
 	let newFileElt = document.createDocumentFragment();
@@ -71,19 +71,19 @@ function inputFieldEvent(event){
 	// fileInput.addEventListener('change', inputFieldEvent);
 }
 function checkEmptyField(field){
-	if (field.name == "file_name[]"){
-		let errorFocus = form.querySelector('input.activeInputFile');
-	} else {
-		let errorFocus = form.querySelector('input[name=' + field.name + ']');
-	}
 	
-	if (errorFocus === null){
-			errorFocus = form.querySelector('textarea[name=' + field.name + ']');
+	if (field.name == "file_name[]"){
+		
+		var errorFocus = form.querySelector('input.activeInputFile');
+	}
+	if ((field.name == "sender_email") || (field.name == "receiver_email") || (field.name == "envoi")){
+		var errorFocus = form.querySelector('input[name=' + field.name + ']');
+	}
+	if (field.name == "message"){
+		var errorFocus = form.querySelector('textarea[name=' + field.name + ']');
+		
 	}
 	if (!field.value.length > 0){
-		if (errorFocus === null){
-			errorFocus = form.querySelector('textarea[name=' + field.name + ']');
-		}
 		if (errorFocus.type === "file"){
 			if (addedFilesField.innerHTML == ""){
 				form.querySelector('#addFileField').style.border = "2px solid red";
@@ -103,15 +103,25 @@ function checkEmptyField(field){
 		return false;	
 	}	
 }
-form.addEventListener('submit', function (event){
-	
+form.addEventListener('submit', function (event){	
+	event.preventDefault();
+	var error = -1;
 	for (let field of form){
 		let empty = checkEmptyField(field);
 		if (empty){
+			error *= -1;
 			break;
-			event.preventDefault();
 		}
-	}	
+	}
+	if (error == 1){
+		alert('des erreurs dans le formulaire');
+	} else {
+		form.submit();
+	}
+	
+	
+
+
 });
 fileInput.addEventListener('change', inputFieldEvent);
 
