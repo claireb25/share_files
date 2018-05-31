@@ -1,6 +1,5 @@
 <?php
-
-echo $_GET['action'];
+// echo $_GET['action'];
 if (isset($_GET['action'])){
     switch ($_GET['action']) { 
         case "home":

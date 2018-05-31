@@ -14,7 +14,7 @@ $twig = new Twig_Environment($loader, array(
     'cache'=> false
 ));
 $template = $twig->load('homepage.html.twig');
-echo $template->render(array('test'=>$test));
+echo $template->render(array());
 
 
 //$_FILES['file_name']['tmp_name'];
@@ -25,70 +25,70 @@ echo $template->render(array('test'=>$test));
 
 // PHP Envoyeur Email //
 
-$sender_email = $_POST['sender_email'];
-$point = strpos($sender_email,".");
-$aroba = strpos($sender_email,"@");
+// $sender_email = $_POST['sender_email'];
+// $point = strpos($sender_email,".");
+// $aroba = strpos($sender_email,"@");
 
-if (!filter_var($sender_email, FILTER_VALIDATE_EMAIL)) {
-    $emailErr = "Invalid email format";
-  }
+// if (!filter_var($sender_email, FILTER_VALIDATE_EMAIL)) {
+//     $emailErr = "Invalid email format";
+//   }
 
-if($point=='')
-{
-echo "Votre email doit comporter un <b>point</b>";
-}
-elseif($aroba=='')
-{
-echo "Votre email doit comporter un <b>'@'</b>";
-}
-else
-{
-echo "Votre email est: '<a href=\"mailto:"."$sender_email"."\"><b>$sender_email</b></a>'";
-} 
+// if($point=='')
+// {
+// echo "Votre email doit comporter un <b>point</b>";
+// }
+// elseif($aroba=='')
+// {
+// echo "Votre email doit comporter un <b>'@'</b>";
+// }
+// else
+// {
+// echo "Votre email est: '<a href=\"mailto:"."$sender_email"."\"><b>$sender_email</b></a>'";
+// } 
 
-// PHP Fin //
+// // PHP Fin //
 
-// PHP Receveur Email //
-$receiver_email = $_POST['receiver_email'];
-$point = strpos($receiver_email,".");
-$aroba = strpos($receiver_email,"@");
+// // PHP Receveur Email //
+// $receiver_email = $_POST['receiver_email'];
+// $point = strpos($receiver_email,".");
+// $aroba = strpos($receiver_email,"@");
 
-if (!filter_var($receiver_email, FILTER_VALIDATE_EMAIL)) {
-    $emailErr = "Invalid email format";
-  }
+// if (!filter_var($receiver_email, FILTER_VALIDATE_EMAIL)) {
+//     $emailErr = "Invalid email format";
+//   }
 
-if($point=='')
-{
-echo "Votre email doit comporter un <b>point</b>";
-}
-elseif($aroba=='')
-{
-echo "Votre email doit comporter un <b>'@'</b>";
-}
-else
-{
-echo "Votre email est: '<a href=\"mailto:"."$receiver_email"."\"><b>$receiver_email</b></a>'";
-} 
+// if($point=='')
+// {
+// echo "Votre email doit comporter un <b>point</b>";
+// }
+// elseif($aroba=='')
+// {
+// echo "Votre email doit comporter un <b>'@'</b>";
+// }
+// else
+// {
+// echo "Votre email est: '<a href=\"mailto:"."$receiver_email"."\"><b>$receiver_email</b></a>'";
+// } 
 
-// PHP Fin //
+// // PHP Fin //
 
-// PHP Message //
+// // PHP Message //
 
-$message = $_POST['message'];
+// $message = $_POST['message'];
 
-if(empty($message))
-{
-exit();
-}
+// if(empty($message))
+// {
+// exit();
+// }
 
-// PHP Fin //
+// // PHP Fin //
 
-if (isset($_POST['sender_email']) && empty($_POST['receiver_email']) && empty($_POST['']) && empty($_POST['file_name']))
-{
-    echo '<p>'.'hello '.$_POST['file_name'].'</p>';
-}
-else
-{
-    echo '<p>il manque un renseignement</p>';
-}
+// if (isset($_POST['sender_email']) && empty($_POST['receiver_email']) && empty($_POST['']) && empty($_POST['file_name']))
+// {
+//     echo '<p>'.'hello '.$_POST['file_name'].'</p>';
+// }
+// else
+// {
+//     echo '<p>il manque un renseignement</p>';
+// }
 
