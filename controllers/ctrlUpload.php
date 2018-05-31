@@ -30,11 +30,16 @@ if (isset($_POST['sender_email'])&& !empty($_POST['sender_email'])
             require("models/user.class.php");
             $id_user = User::insertUser($sender_email, $receiver_email,$message);
             File::insertFile($file_name, $file_size, $id_user);
-            
+            $url = "http://localhost/share_files/download";
+            $key = "php c'est genial, les goupils aussi";
+            $current_time = time();
+            $link = hash_hmac('ripemd160', $current_time.$id_user, $key);
+            $dlLink = $url . "/" . $link;
+      
             $to      = $receiver_email;
             $subject = $sender_email . " vous a envoyé des fichiers via Share Files";
-            $message = $sender_email. ' vous a envoyé des fichiers';
-            
+            $message = $sender_email. ' vous a envoyé des fichiers
+            <a href='.$dbLink.'> Télécharger </a>';
             
             mail($to, $subject, $message);
             

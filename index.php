@@ -8,5 +8,16 @@ if (isset($_GET['action'])){
         case "upload":
             require('controllers/ctrlUpload.php');
         break;
+
+        case "download":
+            require('controllers/ctrlDownload.php');
+        break;
+
+        default:
+            require('controllers/ctrlHome.php');
+        break;
+
+       
     }
 } 
+
