@@ -2,20 +2,25 @@
 {% block content_1 %}
 
 <section class="main--form">
-<form action="upload" method="post" enctype="multipart/form-data">
+<form id="mainForm" action="upload" method="post" enctype="multipart/form-data">
 <article class="form-files-section">
-<input type="file" name="file_name">
+<p>Taille totale = <span id="totalSize">0</span> ko</p>
+				<div id="addedFilesField"></div>
+<div id="addFileField">
+					<img src="assets/medias/img/plus_sign.svg">
+					<input type="file" multiple name="file_name" class="activeInputFile">
+					<p>Ajouter un fichier</p>
+				</div>
 </article>
 
 <article class="form-info-section">
-<input type="email" name="sender_email" value="{{session.sender_email}}" >
-<input type="email" name="receiver_email" value="{{session.receiver_email}}">
-<textarea name="message">{{session.message}}</textarea>
+<input type="email" placeholder="votre email" name="sender_email" value="{{session.sender_email}}" >
+<input type="email" placeholder="email destinataire" name="receiver_email" value="{{session.receiver_email}}">
+<textarea name="message" placeholder="Votre message">{{session.message}}</textarea>
 </article>
-<p><input type="submit" name=""></p>
+<p class="submit"><input type="submit" name="submit" value="ENVOYER"></p>
 </form>
 </section>
 
-{{test.message}}
-
 {% endblock %} 
+	
