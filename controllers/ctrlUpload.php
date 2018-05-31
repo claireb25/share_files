@@ -30,7 +30,16 @@ if (isset($_POST['sender_email'])&& !empty($_POST['sender_email'])
             require("models/user.class.php");
             $id_user = User::insertUser($sender_email, $receiver_email,$message);
             File::insertFile($file_name, $file_size, $id_user);
-            var_dump($id_user);
+            
+            $to      = $receiver_email;
+            $subject = $sender_email . "vous a envoyé des fichiers via share files";
+            $message = 'vous a envoyé des fichiers';
+            $headers = array(
+                'From' => 'claire.b@codeur.online',
+                
+            );
+            
+            mail($to, $subject, $message, $headers);
             
             if($import == false)
             {
