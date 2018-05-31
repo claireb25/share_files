@@ -56,6 +56,7 @@ function inputFieldEvent(event){
 		fileInput.addEventListener('change', inputFieldEvent);
 	} else {
 		// traitement 2go dépassés
+		window.alert('2go de transfert maximum!');
 		parentElt.replaceChild(inputFieldFragment, fileInput);
 		fileInput.removeEventListener('change', inputFieldEvent);
 		// parentElt.removeChild(fileInput);
@@ -106,8 +107,7 @@ form.addEventListener('submit', function (event){
 			break;
 			event.preventDefault();
 		}
-	}
-	
+	}	
 });
 fileInput.addEventListener('change', inputFieldEvent);
 
