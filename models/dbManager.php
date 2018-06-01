@@ -5,8 +5,8 @@ class dbManager
     protected $db;
     private $host = "localhost";
 
-    private $login = "admin";
-    private $password = "online2017";
+    private $login = "claireb";
+    private $password = "7TQUD3FakR";
 
  
     public function __construct($database)
