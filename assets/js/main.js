@@ -117,7 +117,7 @@ form.addEventListener('submit', function (event){
 			break;
 		}
 		if (field.type == "email"){
-			if (!checkValidEmail(field)){
+			if (!checkValidMail(field)){
 				error *= -1;
 				break;
 			}

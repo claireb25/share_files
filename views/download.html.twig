@@ -1,9 +1,12 @@
 	
 {% extends 'template.html.twig' %}
 {% block content_1 %}
-
- <a href="index.php?action=download&memeId={{ meme.id }}&memeName={{ meme.url }}">
+{% for file in files %}
+<p>
+ <a href="/share_files/assets/medias/uploads/{{user}}/{{file.file_name}}">
     <button type="submit" class="btn-pink">Télécharger</button>
 </a>
+</p>
+{% endfor %}
 
 {% endblock %} 

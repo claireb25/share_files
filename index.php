@@ -9,8 +9,9 @@ if (isset($_GET['action'])){
             require('controllers/ctrlUpload.php');
         break;
 
-        case "download":
+        case "download/":
             require('controllers/ctrlDownload.php');
+        echo "coucou";
         break;
 
         default:
