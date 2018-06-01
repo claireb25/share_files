@@ -103,6 +103,10 @@ function checkEmptyField(field){
 		return false;	
 	}	
 }
+function checkValidMail(field){
+	var maRegex =  /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
+	return maRegex.test(field.value);
+}
 form.addEventListener('submit', function (event){	
 	event.preventDefault();
 	var error = -1;
@@ -112,16 +116,18 @@ form.addEventListener('submit', function (event){
 			error *= -1;
 			break;
 		}
+		if (field.type == "email"){
+			if (!checkValidEmail(field)){
+				error *= -1;
+				break;
+			}
+		}
 	}
 	if (error == 1){
 		alert('des erreurs dans le formulaire');
 	} else {
 		form.submit();
 	}
-	
-	
-
-
 });
 fileInput.addEventListener('change', inputFieldEvent);
 
