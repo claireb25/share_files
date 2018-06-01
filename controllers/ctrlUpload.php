@@ -14,7 +14,7 @@ if (isset($_POST['sender_email'])&& !empty($_POST['sender_email'])
                     
                     require("models/file.class.php");
                     require("models/user.class.php");
-                    $url = "http://localhost/share_files/download";
+                    $url = "https://claireb.promo-17.codeur.online/share_files/download";
                     $key = "php c'est genial, les goupils aussi";
                     
                     
@@ -33,44 +33,57 @@ if (isset($_POST['sender_email'])&& !empty($_POST['sender_email'])
                         $temp_name = $_FILES["file_name"]["tmp_name"][$i];
                         $file_size = $_FILES['file_name']['size'][$i];
                         $file_name = $_FILES['file_name']['name'][$i];
-                        // var_dump($file_size);
-                        // var_dump($file_name);
-                        // var_dump($temp_name);
+
                         $import = move_uploaded_file($temp_name, $target_dir.'/'.$file_name);
                         File::insertFile($file_name, $file_size, $id_user);
+                    
                     };
 
+                     
                     $to      = $receiver_email;
                     $subject = $sender_email . " vous a envoyé des fichiers via Share Files";
-                    $message = $sender_email. ' vous a envoyé des fichiers
-                    <a href='.$dlLink.'> Télécharger </a>';
-                    
-                    mail($to, $subject, $message);
+                    $mail = "<html>
+                    <head>
+                    <title>HTML email</title>
+                    </head>
+                    <body> 
+                        <section>" .$sender_email. '<p> vous a envoyé des fichiers</p>
+                            <a href='.$dlLink.'><button type="submit" class="btn-pink">Télécharger</button></a><br><p>'
+                            .$message.'</p>
+                        </section>
+                    </body>
+                    </html>';
+                    // Always set content-type when sending HTML email
+                    $headers = "MIME-Version: 1.0" . "\r\n";
+                    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+                    mail($to, $subject, $mail,$headers);
                    
                     if($import == false)
                     {
-                        header('Location: state');;
+                        header('Location: state');
                         $_SESSION['uploadError'] = array(
                         "sender_email" => $_POST['sender_email'],
                         "receiver_email" => $_POST['receiver_email'],
                         "message" => $_POST['message'],
                         "file_name" => $_FILES['file_name']
                         );  
-                    }else
+                    }
+                    else
                     {
                         header('Location: state');
                     }
-    }}
-    else 
-    {
-        header('Location: /share_files');;
-        $_SESSION = array(
-        "sender_email" => $_POST['sender_email'],
-        "receiver_email" => $_POST['receiver_email'],
-        "message" => $_POST['message'],
-        "file_name" => $_FILES['file_name']
-        );
-    };
+    }
+}
+else 
+{
+    header('Location: /share_files');
+    $_SESSION = array(
+    "sender_email" => $_POST['sender_email'],
+    "receiver_email" => $_POST['receiver_email'],
+    "message" => $_POST['message'],
+    "file_name" => $_FILES['file_name']
+    );
+}
 
 
     $repertoireDestination = "assets/medias/uploads/";   

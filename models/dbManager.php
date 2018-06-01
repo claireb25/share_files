@@ -4,7 +4,6 @@ class dbManager
 {
     protected $db;
     private $host = "localhost";
-
     private $login = "julien";
     private $password = "online2017";
 

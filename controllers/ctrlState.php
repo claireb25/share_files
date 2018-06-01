@@ -7,5 +7,10 @@ $twig = new Twig_Environment($loader, array(
     'cache'=> false
 ));
 $template = $twig->load('state.html.twig');
-
-echo $template->render(array('session'=>$_SESSION['uploadError']));
+if (isset($_SESSION['uploadError'])){
+	$data = array( 'error' => true, 'userData' => $_SESSION['uploadError']);
+	echo $template->render(array('session'=>$data));
+} else {
+	$data = array( 'error' => false );
+	echo $template->render(array('session'=>$data));
+}
