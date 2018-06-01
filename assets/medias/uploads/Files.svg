@@ -1,0 +1,59 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="374" height="136" view_box="0 0 374 136"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:link="http://www.w3.org/1999/xlink">\n\n<desc>Généré par Mocodo 2.3.7 le Mon, 28 May 2018 03:25:19</desc>
+
+<rect id="frame" x="0" y="0" width="374" height="136" fill="#f7f7f7" stroke="none" stroke-width="0"/>
+
+<!-- Association bind_user_files -->
+<line x1="59" y1="68" x2="194" y2="68" stroke="#e08214" stroke-width="2"/>
+<text x="114" y="85.0" fill="#542788" font-family="Verdana" font-size="12">1,N</text>
+<line x1="322" y1="68" x2="194" y2="68" stroke="#e08214" stroke-width="2"/>
+<text x="252" y="85.0" fill="#542788" font-family="Verdana" font-size="12">1,N</text>
+<g id="association-bind_user_files">
+	<path d="M 233 26 a 14 14 90 0 1 14 14 V 51 h -106 V 40 a 14 14 90 0 1 14 -14" fill="#fdb863" stroke="#fdb863" stroke-width="0"/>
+	<path d="M 247 51.0 v 45 a 14 14 90 0 1 -14 14 H 155 a 14 14 90 0 1 -14 -14 V 51.0 H 106" fill="#fee0b6" stroke="#fee0b6" stroke-width="0"/>
+	<rect x="141" y="26" width="106" height="84" fill="none" rx="14" stroke="#e08214" stroke-width="2"/>
+	<line x1="141" y1="51" x2="247" y2="51" stroke="#e08214" stroke-width="1"/>
+	<text x="148" y="43.7" fill="#000000" font-family="Verdana" font-size="12">bind_user_files</text>
+	<text x="148" y="68.8" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<text x="148" y="85.8" fill="#000000" font-family="Verdana" font-size="12">id_user</text>
+	<text x="148" y="102.8" fill="#000000" font-family="Verdana" font-size="12">id_file</text>
+</g>
+
+<!-- Entity files -->
+<g id="entity-files">
+	<g id="frame-files">
+		<rect x="279" y="9" width="86" height="25" fill="#b2abd2" stroke="#b2abd2" stroke-width="0"/>
+		<rect x="279" y="34.0" width="86" height="93" fill="#d8daeb" stroke="#d8daeb" stroke-width="0"/>
+		<rect x="279" y="9" width="86" height="118" fill="none" stroke="#8073ac" stroke-width="2"/>
+		<line x1="279" y1="34" x2="365" y2="34" stroke="#8073ac" stroke-width="1"/>
+	</g>
+	<text x="309" y="26.7" fill="#000000" font-family="Verdana" font-size="12">files</text>
+	<text x="284" y="51.7" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="284" y1="54" x2="296" y2="54" stroke="#000000" stroke-width="1"/>
+	<text x="284" y="68.8" fill="#000000" font-family="Verdana" font-size="12">file_name</text>
+	<text x="284" y="85.8" fill="#000000" font-family="Verdana" font-size="12">file_size</text>
+	<text x="284" y="102.8" fill="#000000" font-family="Verdana" font-size="12">upload_date</text>
+	<text x="284" y="119.8" fill="#000000" font-family="Verdana" font-size="12">delete_date</text>
+</g>
+
+<!-- Entity user -->
+<g id="entity-user">
+	<g id="frame-user">
+		<rect x="9" y="17" width="100" height="25" fill="#b2abd2" stroke="#b2abd2" stroke-width="0"/>
+		<rect x="9" y="42.0" width="100" height="77" fill="#d8daeb" stroke="#d8daeb" stroke-width="0"/>
+		<rect x="9" y="17" width="100" height="102" fill="none" stroke="#8073ac" stroke-width="2"/>
+		<line x1="9" y1="42" x2="109" y2="42" stroke="#8073ac" stroke-width="1"/>
+	</g>
+	<text x="45" y="34.7" fill="#000000" font-family="Verdana" font-size="12">user</text>
+	<text x="14" y="59.7" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="14" y1="62" x2="26" y2="62" stroke="#000000" stroke-width="1"/>
+	<text x="14" y="76.8" fill="#000000" font-family="Verdana" font-size="12">sender_email</text>
+	<text x="14" y="93.8" fill="#000000" font-family="Verdana" font-size="12">receiver_email</text>
+	<text x="14" y="110.8" fill="#000000" font-family="Verdana" font-size="12">message</text>
+</g>
+</svg>
