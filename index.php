@@ -14,7 +14,10 @@ if (isset($_GET['action'])){
 
         case "download/":
             require('controllers/ctrlDownload.php');
-        echo "coucou";
+        break;
+        
+        case "state":
+        	require('controllers/ctrlState.php');
         break;
 
         default:
