@@ -1,8 +1,0 @@
-%%mocodo
-:
-user: id, sender_email, receiver_email, message
-:
-bind_user_files: #id->user->id, _#id.1->files->id, id.2, id_user, id_file
-:
-files: id, file_name, file_size, upload_date, delete_date
-:
