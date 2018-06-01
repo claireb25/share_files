@@ -50,7 +50,7 @@ if (isset($_POST['sender_email'])&& !empty($_POST['sender_email'])
                    
                     if($import == false)
                     {
-                        header('Location: /state');;
+                        header('Location: state');
                         $_SESSION['uploadError'] = array(
                         "sender_email" => $_POST['sender_email'],
                         "receiver_email" => $_POST['receiver_email'],
@@ -59,20 +59,21 @@ if (isset($_POST['sender_email'])&& !empty($_POST['sender_email'])
                         );  
                     }else
                     {
-                        header('Location : /state');
+                        header('Location: state');
                     }
 
-    }}
-    else 
-    {
-        header('Location: /share_files');;
-        $_SESSION = array(
-        "sender_email" => $_POST['sender_email'],
-        "receiver_email" => $_POST['receiver_email'],
-        "message" => $_POST['message'],
-        "file_name" => $_FILES['file_name']
-        );
-    };
+    }
+}
+else 
+{
+    header('Location: /share_files');
+    $_SESSION = array(
+    "sender_email" => $_POST['sender_email'],
+    "receiver_email" => $_POST['receiver_email'],
+    "message" => $_POST['message'],
+    "file_name" => $_FILES['file_name']
+    );
+}
 
 // require_once 'vendor/autoload.php';
 
