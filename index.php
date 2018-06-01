@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 if (isset($_GET['action'])){
     switch ($_GET['action']) { 
         case "home":
@@ -11,14 +13,15 @@ if (isset($_GET['action'])){
 
         case "download/":
             require('controllers/ctrlDownload.php');
-        echo "coucou";
+        break;
+        
+        case "state":
+        	require('controllers/ctrlState.php');
         break;
 
         default:
             require('controllers/ctrlHome.php');
         break;
-
-       
     }
 } 
 
