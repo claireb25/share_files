@@ -1,11 +1,5 @@
 <?php 
 
-// upload file
-$uploadOk = 1;
-
-
-
-
 // PHP Envoyeur Email //
 
 if (isset($_POST['sender_email'])&& !empty($_POST['sender_email'])
@@ -20,23 +14,25 @@ if (isset($_POST['sender_email'])&& !empty($_POST['sender_email'])
                
                 if (preg_match('#^([\w\.-]+)@([\w\.-]+)(\.[a-z]{2,4})$#',trim($_POST['sender_email']))
                     && preg_match('#^([\w\.-]+)@([\w\.-]+)(\.[a-z]{2,4})$#',trim($_POST['receiver_email']))){
-
-                    
-                   
                     
                     require("models/file.class.php");
                     require("models/user.class.php");
                     $url = "http://localhost/share_files/download";
                     $key = "php c'est genial, les goupils aussi";
+                     
                     $current_time = time();
                     $user_hash = hash_hmac('ripemd160', $current_time, $key);
+                    $target_dir = "assets/medias/uploads/". $user_hash;  
+
+                    mkdir($target_dir, 0777);
                     $dlLink = $url . "/" . $user_hash;
-                   
+                        
                    
                     $id_user = User::insertUser($sender_email, $receiver_email,$message,$user_hash);    
               
-                    $target_dir = "assets/medias/uploads";    
+                    
                     $file_count = count($_FILES['file_name']['name']);
+                    
                     for($i=1; $i<$file_count; $i++){
                         $temp_name = $_FILES["file_name"]["tmp_name"][$i];
                         $file_size = $_FILES['file_name']['size'][$i];
@@ -54,11 +50,10 @@ if (isset($_POST['sender_email'])&& !empty($_POST['sender_email'])
                     $to      = $receiver_email;
                     $subject = $sender_email . " vous a envoyé des fichiers via Share Files";
                     $message = $sender_email. ' vous a envoyé des fichiers
-                    <a href='.$dbLink.'> Télécharger </a>';
+                    <a href='.$dlLink.'> Télécharger </a>';
                     
                     mail($to, $subject, $message);
-                    
-                    die;
+                   
                     if($import == false)
                     {
                         header('Location: /share_files');;

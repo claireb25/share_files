@@ -1,4 +1,6 @@
 <?php 
+
+include('dbManager.php');
 class File{
 
     //insert a file
@@ -17,7 +19,7 @@ class File{
         $response = $db->getBdd()->prepare("SELECT sender_email,receiver_email,`message`,`file_name`,file_size, delete_date, user_hash FROM user INNER JOIN files ON user.id = id_user WHERE user_hash = :user_hash");
         $response->bindParam(":user_hash", $user_hash, PDO::PARAM_INT);
         $response->execute();
-        return $response->fetch(PDO::FETCH_ASSOC);
+        return $response->fetchAll(PDO::FETCH_ASSOC);
     }
 
     // delete from bdd after 2 days
