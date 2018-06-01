@@ -3,21 +3,21 @@
 // pré-validation formulaire avant envoi serveur
 
 var form = document.querySelector('#mainForm');
-var fileInput = form.querySelector('input[type=file].activeInputFile');
+var fileInput = form.querySelector('input.activeInputFile');
 const totalMaxFileSize = 2147483648;
 var totalUploadSize = 0;
 var addedFilesElt = document.querySelector('#addedFilesField');
 
 //
 function inputFileGenerator(){
-var inputFieldFragment = document.createDocumentFragment();	
-var inputElt = document.createElement('input');
-inputElt.setAttribute('type', 'file');
-inputElt.setAttribute('multiple', '');
-inputElt.setAttribute('name', 'file_name')
-inputElt.classList.add('activeInputFile');
-inputFieldFragment.appendChild(inputElt);
-return inputFieldFragment;
+	var inputFieldFragment = document.createDocumentFragment();	
+	var inputElt = document.createElement('input');
+	inputElt.setAttribute('type', 'file');
+	inputElt.setAttribute('multiple', '');
+	inputElt.setAttribute('name', 'file_name[]')
+	inputElt.classList.add('activeInputFile');
+	inputFieldFragment.appendChild(inputElt);
+	return inputFieldFragment;
 }
 function addedFileLayout(name, size, type){
 	let newFileElt = document.createDocumentFragment();
@@ -52,7 +52,7 @@ function inputFieldEvent(event){
 		fileInput.style.display = "none";
 		fileInput.classList.toggle("activeInputFile");
 		fileInput.removeEventListener('change', inputFieldEvent);
-		fileInput = form.querySelector('input[type=file].activeInputFile');
+		fileInput = form.querySelector('input.activeInputFile');
 		fileInput.addEventListener('change', inputFieldEvent);
 	} else {
 		// traitement 2go dépassés
@@ -60,7 +60,7 @@ function inputFieldEvent(event){
 		parentElt.replaceChild(inputFieldFragment, fileInput);
 		fileInput.removeEventListener('change', inputFieldEvent);
 		// parentElt.removeChild(fileInput);
-		fileInput = form.querySelector('input[type=file].activeInputFile');
+		fileInput = form.querySelector('input.activeInputFile');
 		fileInput.addEventListener('change', inputFieldEvent);
 	}
 	// parentElt.insertBefore(inputFieldFragment, fileInput);
@@ -72,14 +72,18 @@ function inputFieldEvent(event){
 }
 function checkEmptyField(field){
 	
-	let errorFocus = form.querySelector('input[name=' + field.name + ']');
-	if (errorFocus === null){
-			errorFocus = form.querySelector('textarea[name=' + field.name + ']');
+	if (field.name == "file_name[]"){
+		
+		var errorFocus = form.querySelector('input.activeInputFile');
+	}
+	if ((field.name == "sender_email") || (field.name == "receiver_email") || (field.name == "envoi")){
+		var errorFocus = form.querySelector('input[name=' + field.name + ']');
+	}
+	if (field.name == "message"){
+		var errorFocus = form.querySelector('textarea[name=' + field.name + ']');
+		
 	}
 	if (!field.value.length > 0){
-		if (errorFocus === null){
-			errorFocus = form.querySelector('textarea[name=' + field.name + ']');
-		}
 		if (errorFocus.type === "file"){
 			if (addedFilesField.innerHTML == ""){
 				form.querySelector('#addFileField').style.border = "2px solid red";
@@ -99,15 +103,31 @@ function checkEmptyField(field){
 		return false;	
 	}	
 }
-form.addEventListener('submit', function (event){
-	
+function checkValidMail(field){
+	var maRegex =  /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
+	return maRegex.test(field.value);
+}
+form.addEventListener('submit', function (event){	
+	event.preventDefault();
+	var error = -1;
 	for (let field of form){
 		let empty = checkEmptyField(field);
 		if (empty){
+			error *= -1;
 			break;
-			event.preventDefault();
 		}
-	}	
+		if (field.type == "email"){
+			if (!checkValidEmail(field)){
+				error *= -1;
+				break;
+			}
+		}
+	}
+	if (error == 1){
+		alert('des erreurs dans le formulaire');
+	} else {
+		form.submit();
+	}
 });
 fileInput.addEventListener('change', inputFieldEvent);
 
