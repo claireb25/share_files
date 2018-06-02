@@ -1,11 +1,25 @@
 {% extends 'template.html.twig' %}
 {% block content_1 %}
 {% for file in files %}
-<p>
- <a href="/share_files/assets/medias/uploads/{{user}}/{{file.file_name}}">
-    <button type="submit" class="btn-pink">Télécharger</button>
-</a>
-</p>
+<article>
+	<div class="infoDwldFile">
+		<div class="dwldFileName">
+			<p>{{ file.file_name }}</p>
+		</div>
+		<div class="sizeAndTypeDwldFile">
+			<p class="dwldFileSize">{{ file.file_size }}</p>
+			<p class="dwldfileType">{{ file.file_type }}</p>
+		</div>
+	</div>
+	<div class="dwldButton">
+		<p>
+	 		<a href="/share_files/assets/medias/uploads/{{user}}/{{file.file_name}}">
+	    	<button type="submit" class="btn-pink">Télécharger</button>
+			</a>
+		</p>
+	</div>
+	
+</article>
 {% endfor %}
 
 {% endblock %} 

@@ -17,7 +17,10 @@ div.content {
 
 @media screen and (max-width: 640px) {
   div.content {
-    justify-content: center; } }
+    justify-content: center; }
+
+  section.main--form {
+    max-width: 60%; } }
 header {
   width: 100%;
   height: 15%;
@@ -36,14 +39,15 @@ header {
 
 section.main--content_1 {
   width: 100%;
-  height: 50%;
+  min-height: 50%;
+  height: auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center; }
 
 section.main--form {
-  height: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -52,7 +56,7 @@ section.main--form {
   border-radius: 10px;
   box-shadow: 2px 2px 10px black; }
   section.main--form form {
-    height: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -62,19 +66,23 @@ section.main--form {
       flex-direction: column;
       justify-content: flex-end;
       align-items: center;
-      height: 40%;
+      height: auto;
       border-bottom: 1px solid #A28243; }
-      section.main--form form article.form-files-section div {
+      section.main--form form article.form-files-section div#addFileField {
         position: relative;
         display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
         align-items: center;
-        height: 40px;
+        height: auto;
+        min-height: 50px;
         width: 80%;
-        margin-bottom: 10px; }
-        section.main--form form article.form-files-section div img {
+        margin-bottom: 10px;
+        margin-top: 10px; }
+        section.main--form form article.form-files-section div#addFileField img {
           width: 40px;
           position: absolute; }
-        section.main--form form article.form-files-section div p {
+        section.main--form form article.form-files-section div#addFileField p.buttonMask {
           position: absolute;
           right: 0; }
     section.main--form form article.form-info-section {
@@ -102,6 +110,39 @@ section.main--form {
         padding: 7px;
         border-radius: 10px;
         font-weight: 700; }
+
+div#addedFilesField {
+  width: 80%;
+  height: auto; }
+
+article .addedFileBox {
+  margin: 0px;
+  margin-top: 5px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end; }
+  article .addedFileBox h6 {
+    text-align: right;
+    margin: 0px;
+    font-size: 0.8em; }
+  article .addedFileBox div.addedFileInfos {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 0.6em;
+    width: 100%;
+    color: #3F7575; }
+    article .addedFileBox div.addedFileInfos p {
+      width: 25%;
+      margin: 0px;
+      text-align: right;
+      border-bottom: 1px solid blue; }
+    article .addedFileBox div.addedFileInfos p.emptyElt {
+      width: 50%;
+      border: none; }
 
 input[type=email] {
   background: white;
