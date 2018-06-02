@@ -139,7 +139,7 @@ article .addedFileBox {
       width: 25%;
       margin: 0px;
       text-align: right;
-      border-bottom: 1px solid blue; }
+      border-bottom: 1px solid #7482A0; }
     article .addedFileBox div.addedFileInfos p.emptyElt {
       width: 50%;
       border: none; }
