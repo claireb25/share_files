@@ -80,7 +80,11 @@ section.main--form {
         section.main--form form article.form-files-section div#addFileField img {
           width: 35px;
           position: absolute;
-          left: 0; }
+          left: 0;
+          box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+          border-radius: 20px; }
+          section.main--form form article.form-files-section div#addFileField img:hover {
+            transform: rotate(90deg); }
         section.main--form form article.form-files-section div#addFileField p.buttonMask {
           position: absolute;
           right: 0;
@@ -104,11 +108,16 @@ section.main--form {
       justify-content: center;
       align-items: center; }
       section.main--form form p.submit input {
-        background: #d40000;
+        background: #0D1B3D;
+        color: white;
         border: none;
         padding: 7px;
-        border-radius: 10px;
-        font-weight: 700; }
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 20px;
+        font-weight: 700;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.6);
+        letter-spacing: 0.15em; }
 
 div#addedFilesField {
   width: 80%;
