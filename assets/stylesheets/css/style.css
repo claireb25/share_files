@@ -8,7 +8,14 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center; }
+  align-items: center;
+  background: -moz-linear-gradient(top, #063636 0%, #164e4e 21%, #286161 55%, #3f7575 79%, #648f8f 99%, #648f8f 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, #063636), color-stop(21%, #164e4e), color-stop(55%, #286161), color-stop(79%, #3f7575), color-stop(99%, #648f8f), color-stop(100%, #648f8f));
+  background: -webkit-linear-gradient(top, #063636 0%, #164e4e 21%, #286161 55%, #3f7575 79%, #648f8f 99%, #648f8f 100%);
+  background: -o-linear-gradient(top, #063636 0%, #164e4e 21%, #286161 55%, #3f7575 79%, #648f8f 99%, #648f8f 100%);
+  background: -ms-linear-gradient(top, #063636 0%, #164e4e 21%, #286161 55%, #3f7575 79%, #648f8f 99%, #648f8f 100%);
+  background: linear-gradient(to bottom, #063636 0%, #164e4e 21%, #286161 55%, #3f7575 79%, #648f8f 99%, #648f8f 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#063636', endColorstr='#648f8f', GradientType=0 ); }
 
 div.content {
   width: 80%;
