@@ -4,7 +4,6 @@ if (!isset($_SESSION)){
 }
 
 
-
 if (isset($_GET['action'])){
     switch ($_GET['action']) { 
         case "home":
@@ -26,8 +25,6 @@ if (isset($_GET['action'])){
         default:
             require('controllers/ctrlHome.php');
         break;
-
-       
     }
 } 
 
