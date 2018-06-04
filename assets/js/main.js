@@ -52,6 +52,10 @@ function removeFile(event){
 			if (file.length > 0){
 				let name = file[0].name;
 				if (name == cancelName){
+					let sizeToSubstract = file[0].size;
+					computeAddedFile(-sizeToSubstract);
+					document.querySelector('#totalSize').textContent = "";
+					document.querySelector('#totalSize').textContent = Math.round(totalUploadSize / 1024); 
 					let parent = inputFiles[i].parentNode;
 					parent.removeChild(inputFiles[i]);
 					addedFilesElt.removeChild(cancelFile);
