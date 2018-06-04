@@ -3,7 +3,6 @@ if (!isset($_SESSION)){
 	session_start();
 }
 
-
 if (isset($_GET['action'])){
     switch ($_GET['action']) { 
         case "home":
