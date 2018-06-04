@@ -17,11 +17,14 @@ if(isset($_GET['name'])){
         'cache'=> false
     ));
 
+    var_dump($files);
+
+    
     $template = $twig->load('download.html.twig');
 
     echo $template->render(array('files'=>$files, "user"=>$user_hash));
 
-
+   
 
 }
 
