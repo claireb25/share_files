@@ -260,7 +260,8 @@ article.dwldFileBox {
       font-size: 0.8em;
       color: #000000;
       text-align: right;
-      font-family: "Open Sans", sans-serif; }
+      font-family: "Open Sans", sans-serif;
+      overflow: auto; }
     article.dwldFileBox div.dwldInfoBox div.dwldFileInfos {
       width: 100%;
       margin-right: 40%;
@@ -297,5 +298,9 @@ p.dwldFileButton {
 
 span.redColor {
   color: #d40000; }
+
+@media screen and (min-height: 800px) {
+  form {
+    min-height: 37vh !important; } }
 
 /*# sourceMappingURL=style.css.map */
