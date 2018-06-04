@@ -69,18 +69,18 @@ if (isset($_POST['sender_email'])&& !empty($_POST['sender_email'])
 
                     $to      = $receiver_email;
                     $subject = $sender_email . " vous a envoyé des fichiers via Share Files";
-                    // $mail = "<html>
-                    // <head>
-                    // <title>HTML email</title>
-                    // </head>
-                    // <body> 
-                    //     <section>" .$sender_email. '<p> vous a envoyé des fichiers</p>
-                    //         <p> '.$file_count .'fichiers - taille : '.round($size/ 1024) .'ko</p>
-                    //         <a href='.$dlLink.'><button type="submit" class="btn-pink">Télécharger</button></a><br><p>'
-                    //         .$message.'</p>
-                    //     </section>
-                    // </body>
-                    // </html>';
+                    $mail = "<html>
+                    <head>
+                    <title>HTML email</title>
+                    </head>
+                    <body> 
+                        <section>" .$sender_email. '<p> vous a envoyé des fichiers</p>
+                            <p> '.$file_count .'fichiers - taille : '.round($size/ 1024) .'ko</p>
+                            <a href='.$dlLink.'><button type="submit" class="btn-pink">Télécharger</button></a><br><p>'
+                            .$message.'</p>
+                        </section>
+                    </body>
+                    </html>';
 
                     // Always set content-type when sending HTML email
 
