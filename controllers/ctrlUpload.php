@@ -14,7 +14,7 @@ if (isset($_POST['sender_email'])&& !empty($_POST['sender_email'])
                     
                     require("models/file.class.php");
                     require("models/user.class.php");
-                    $url = "https://claireb.promo-17.codeur.online/share_files/download";
+                    $url = "https://claireb@codeur.online/share_files/download/";
                     $key = "php c'est genial, les goupils aussi";
                     
                     
@@ -33,6 +33,7 @@ if (isset($_POST['sender_email'])&& !empty($_POST['sender_email'])
                         $temp_name = $_FILES["file_name"]["tmp_name"][$i];
                         $file_size = $_FILES['file_name']['size'][$i];
                         $file_name = $_FILES['file_name']['name'][$i];
+                        
 
                         $import = move_uploaded_file($temp_name, $target_dir.'/'.$file_name);
                         File::insertFile($file_name, $file_size, $id_user);
@@ -82,10 +83,4 @@ else
     );
 }
 
-    $repertoireDestination = "assets/medias/uploads/";   
-    $NomDuFichier = $_FILES["file_name"]["name"];
-    $taille_max = 2147483648;
-    $taille_fichier = filesize($_FILES['file_name']['tmp_name']);
-    if ($taille_fichier > $taille_max){
-      echo "Vous avez dépassé la taille de fichier autorisée";
-    }
+// upload_max_filesize 2M
