@@ -29,17 +29,20 @@ if (isset($_POST['sender_email'])&& !empty($_POST['sender_email'])
                     $id_user = User::insertUser($sender_email, $receiver_email,$message,$user_hash);    
               
                     $file_count = count($_FILES['file_name']['name']);
-                    
+                    $size =0;
                     for($i=1; $i<$file_count; $i++){
                         $temp_name = $_FILES["file_name"]["tmp_name"][$i];
                         $file_size = $_FILES['file_name']['size'][$i];
                         $file_name = $_FILES['file_name']['name'][$i];
+                        $size +=$file_size;
+                        var_dump($size);
+                        // var_dump($file_size);
+                        // var_dump($file_name);
+                        // var_dump($temp_name);
 
                         $import = move_uploaded_file($temp_name, $target_dir.'/'.$file_name);
                         File::insertFile($file_name, $file_size, $id_user);
-                    
                     };
-
                      
                     $to      = $receiver_email;
                     $subject = $sender_email . " vous a envoyé des fichiers via Share Files";
@@ -49,6 +52,7 @@ if (isset($_POST['sender_email'])&& !empty($_POST['sender_email'])
                     </head>
                     <body> 
                         <section>" .$sender_email. '<p> vous a envoyé des fichiers</p>
+                            <p> '.$file_count .'fichiers - taille : '.$size .'octets</p>
                             <a href='.$dlLink.'><button type="submit" class="btn-pink">Télécharger</button></a><br><p>'
                             .$message.'</p>
                         </section>
@@ -85,16 +89,9 @@ else
     "message" => $_POST['message'],
     "file_name" => $_FILES['file_name']
     );
+
 }
 
 
 
-
-// require_once 'vendor/autoload.php';
-
-// $loader = new Twig_Loader_Filesystem('views');
-// $twig = new Twig_Environment($loader, array(
-//     'cache'=> false
-// ));
-// $template = $twig->load('homepage.html.twig');
-// echo $template->render(array('test'=>$test));
+} ;
