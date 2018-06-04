@@ -39,7 +39,7 @@ if (isset($_POST['sender_email'])&& !empty($_POST['sender_email'])
                     require("models/file.class.php");
                     require("models/user.class.php");
 
-                    $url = "https://claireb.codeur.online/share_files/download/";
+                    $url = "https://claireb.codeur.online/share_files/download";
                     $key = "php c'est genial, les goupils aussi";
                     $current_time = time();
                     $user_hash = hash_hmac('ripemd160', $current_time, $key);
