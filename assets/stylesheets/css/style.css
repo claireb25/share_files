@@ -23,7 +23,13 @@ div.content {
 
 @media screen and (max-width: 640px) {
   section.main--form {
-    max-width: 60%; } }
+    max-width: 60%; }
+
+  #bgvid {
+    display: none; } }
+@media screen and (max-width: 320px) {
+  form {
+    max-width: 80%; } }
 header {
   width: 100%;
   height: 15%;
@@ -38,7 +44,11 @@ header {
     justify-content: flex-start;
     align-items: center; }
   header article {
-    width: 33.3333333333%; }
+    width: auto; }
+    header article svg {
+      margin-top: 10px;
+      width: 60%;
+      height: 60%; }
 
 section.main--content_1 {
   width: 100%;
@@ -158,6 +168,8 @@ article .addedFileBox {
     article .addedFileBox div.addedFileInfos p.emptyElt {
       width: 50%;
       border: none; }
+      article .addedFileBox div.addedFileInfos p.emptyElt img {
+        width: 15px; }
 
 p.totalSizeBox {
   width: 80%;
@@ -181,5 +193,109 @@ input[type=file] {
   width: 100%;
   height: 100%;
   z-index: 10; }
+
+video#bgvid {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  background: #286161;
+  background: -moz-linear-gradient(top, #063636 0%, #164e4e 21%, #286161 55%, #3f7575 79%, #648f8f 99%, #648f8f 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, #063636), color-stop(21%, #164e4e), color-stop(55%, #286161), color-stop(79%, #3f7575), color-stop(99%, #648f8f), color-stop(100%, #648f8f));
+  background: -webkit-linear-gradient(top, #063636 0%, #164e4e 21%, #286161 55%, #3f7575 79%, #648f8f 99%, #648f8f 100%);
+  background: -o-linear-gradient(top, #063636 0%, #164e4e 21%, #286161 55%, #3f7575 79%, #648f8f 99%, #648f8f 100%);
+  background: -ms-linear-gradient(top, #063636 0%, #164e4e 21%, #286161 55%, #3f7575 79%, #648f8f 99%, #648f8f 100%);
+  background: linear-gradient(to bottom, #063636 0%, #164e4e 21%, #286161 55%, #3f7575 79%, #648f8f 99%, #648f8f 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#063636', endColorstr='#648f8f', GradientType=0 );
+  background-size: cover; }
+
+section.dwldMainBox {
+  width: 100%;
+  max-width: 285px;
+  height: auto;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center; }
+
+article.dwldIntroBox {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 2px dotted #648F8F; }
+  article.dwldIntroBox h5 {
+    margin: 0px;
+    font-size: 1.2em;
+    color: #33456C; }
+  article.dwldIntroBox div.imgDwldIntro {
+    width: 100px;
+    height: 100px; }
+
+article.dwldFileBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  border-bottom: 1px solid #A28243; }
+  article.dwldFileBox div.dwldInfoBox {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    article.dwldFileBox div.dwldInfoBox h6.dwldFileName {
+      width: 100%;
+      margin: 0px;
+      margin-right: 40%;
+      font-size: 0.8em;
+      color: #000000;
+      text-align: right;
+      font-family: "Open Sans", sans-serif; }
+    article.dwldFileBox div.dwldInfoBox div.dwldFileInfos {
+      width: 100%;
+      margin-right: 40%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center; }
+      article.dwldFileBox div.dwldInfoBox div.dwldFileInfos p {
+        margin: 0px;
+        font-size: 0.6em;
+        margin-left: 10px;
+        color: #3F7575; }
+
+p.dwldFileButton {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0px; }
+  p.dwldFileButton svg {
+    width: 30px;
+    height: 30px;
+    display: block;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    transform: rotate(90deg);
+    transition: all 0.3s linear; }
+    p.dwldFileButton svg:hover {
+      transform: rotate(0deg); }
+    p.dwldFileButton svg:active {
+      transform: scale(1.2); }
+
+span.redColor {
+  color: #d40000; }
 
 /*# sourceMappingURL=style.css.map */
