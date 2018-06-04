@@ -36,10 +36,7 @@ if (isset($_POST['sender_email'])&& !empty($_POST['sender_email'])
 
                         $import = move_uploaded_file($temp_name, $target_dir.'/'.$file_name);
                         File::insertFile($file_name, $file_size, $id_user);
-                    
-                    };
-
-                     
+                    }; 
                     $to      = $receiver_email;
                     $subject = $sender_email . " vous a envoyé des fichiers via Share Files";
                     $mail = "<html>
@@ -84,7 +81,6 @@ else
     "file_name" => $_FILES['file_name']
     );
 }
-
 
     $repertoireDestination = "assets/medias/uploads/";   
     $NomDuFichier = $_FILES["file_name"]["name"];
