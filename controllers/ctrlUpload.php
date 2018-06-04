@@ -1,7 +1,5 @@
 <?php 
 
-// PHP Envoyeur Email //
-
 if (isset($_POST['sender_email'])&& !empty($_POST['sender_email'])
     && isset($_POST['receiver_email'])&& !empty($_POST['receiver_email']) 
         && isset($_POST['message']) && !empty($_POST['message'])
@@ -16,9 +14,10 @@ if (isset($_POST['sender_email'])&& !empty($_POST['sender_email'])
                     
                     require("models/file.class.php");
                     require("models/user.class.php");
-                    $url = "https://claireb.promo-17.codeur.online/share_files/download";
+                    $url = "https://claireb@codeur.online/share_files/download/";
                     $key = "php c'est genial, les goupils aussi";
-                     
+                    
+                    
                     $current_time = time();
                     $user_hash = hash_hmac('ripemd160', $current_time, $key);
                     $target_dir = "assets/medias/uploads/". $user_hash;  
@@ -111,7 +110,6 @@ if (isset($_POST['sender_email'])&& !empty($_POST['sender_email'])
                         header('Location: state');
                       
                     }
-                    
     }
 }
 else 
@@ -126,6 +124,3 @@ else
 
 }
 
-
-
-} ;

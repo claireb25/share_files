@@ -1,10 +1,5 @@
 <?php 
 
-
-
-
-
-
 if(isset($_GET['name'])){
     require 'models/file.class.php';
     $user_hash = $_GET['name'];
@@ -23,9 +18,6 @@ if(isset($_GET['name'])){
     $template = $twig->load('download.html.twig');
 
     echo $template->render(array('files'=>$files, "user"=>$user_hash));
-
-   
-
 }
 
 
