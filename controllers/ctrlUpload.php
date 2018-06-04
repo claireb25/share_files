@@ -89,9 +89,7 @@ else
     "message" => $_POST['message'],
     "file_name" => $_FILES['file_name']
     );
-}
-
-};
+} ;
 
 
 // require_once 'vendor/autoload.php';
