@@ -7,7 +7,6 @@ var fileInput = form.querySelector('input.activeInputFile');
 const totalMaxFileSize = 2147483648;
 var totalUploadSize = 0;
 var addedFilesElt = document.querySelector('#addedFilesField');
-
 //
 function inputFileGenerator(){
 	var inputFieldFragment = document.createDocumentFragment();	
@@ -19,13 +18,48 @@ function inputFileGenerator(){
 	inputFieldFragment.appendChild(inputElt);
 	return inputFieldFragment;
 }
+function newElt(type, className = '', inner = ''){
+	let elem = document.createElement(type);
+	elem.classList.add(className);
+	elem.innerHTML = inner;
+	return elem;
+}
 function addedFileLayout(name, size, type){
 	let newFileElt = document.createDocumentFragment();
-	let pElt = document.createElement('p');
-	let pContent = name + '  ' + type + '  ' + Math.round(size / 1024) + "ko";
-	pElt.textContent = pContent;
-	newFileElt.appendChild(pElt);
-	addedFilesElt.appendChild(newFileElt);
+	let artElt = newElt('article', 'addedFileBox');
+	let titleElt = newElt('h6', 'addedFileName', name);
+	artElt.appendChild(titleElt);
+	let divElt = newElt('div', 'addedFileInfos');
+	let buttonCancel = '<img class="cancelUploadButton" src="assets/medias/img/close.svg" alt="cancel">';
+	divElt.appendChild(newElt('p', 'emptyElt', buttonCancel));
+	type = type.split('/');
+	type = type[1];
+	divElt.appendChild(newElt('p', 'addedFileType', type));
+	divElt.appendChild(newElt('p', 'addedFileSize', Math.round(size / 1024) + "ko"));
+	artElt.appendChild(divElt);
+	newFileElt.appendChild(artElt);
+	return newFileElt;
+}
+function removeFile(event){
+	
+	
+	if (event.target.classList.contains('cancelUploadButton')){
+		let cancelFile = event.target.parentNode.parentNode.parentNode;
+		let cancelName = cancelFile.firstChild.textContent;
+		let inputFiles = form.querySelectorAll('input[type=file]');
+		for (let i = 0; i < inputFiles.length; i++){
+			let file = inputFiles[i].files;
+			if (file.length > 0){
+				let name = file[0].name;
+				if (name == cancelName){
+					let parent = inputFiles[i].parentNode;
+					parent.removeChild(inputFiles[i]);
+					addedFilesElt.removeChild(cancelFile);
+					break;
+				}
+			}			
+		}
+	}
 }
 //
 function computeAddedFile(size){
@@ -47,7 +81,8 @@ function inputFieldEvent(event){
 	if (computeAddedFile(fileSize)){
 		document.querySelector('#totalSize').textContent = "";
 		document.querySelector('#totalSize').textContent = Math.round(totalUploadSize / 1024);
-		addedFileLayout(fileName, fileSize, fileType);
+		let newFile = addedFileLayout(fileName, fileSize, fileType);
+		addedFilesElt.appendChild(newFile);
 		parentElt.insertBefore(inputFieldFragment, fileInput);
 		fileInput.style.display = "none";
 		fileInput.classList.toggle("activeInputFile");
@@ -84,8 +119,10 @@ function checkEmptyField(field){
 		
 	}
 	if (!field.value.length > 0){
+
 		if (errorFocus.type === "file"){
 			if (addedFilesField.innerHTML == ""){
+				form.querySelector('#addFileField').style.borderRadius = "10px"
 				form.querySelector('#addFileField').style.border = "2px solid red";
 				errorFocus.focus();
         		return true;
@@ -95,6 +132,7 @@ function checkEmptyField(field){
 			}
 		}
         errorFocus.style.border = "2px solid red";
+        errorFocus.style.borderRadius = "10px";
         errorFocus.focus();
         return true;
 
@@ -130,4 +168,4 @@ form.addEventListener('submit', function (event){
 	}
 });
 fileInput.addEventListener('change', inputFieldEvent);
-
+addedFilesElt.addEventListener('click', removeFile);

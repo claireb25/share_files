@@ -1,6 +1,6 @@
 /* Sharing Files SCSS */
 body {
-  height: 640px;
+  height: 100vh;
   margin: 0px;
   padding: 0px;
   background: #286161;
@@ -8,16 +8,28 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center; }
+  align-items: center;
+  background: -moz-linear-gradient(top, #063636 0%, #164e4e 21%, #286161 55%, #3f7575 79%, #648f8f 99%, #648f8f 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, #063636), color-stop(21%, #164e4e), color-stop(55%, #286161), color-stop(79%, #3f7575), color-stop(99%, #648f8f), color-stop(100%, #648f8f));
+  background: -webkit-linear-gradient(top, #063636 0%, #164e4e 21%, #286161 55%, #3f7575 79%, #648f8f 99%, #648f8f 100%);
+  background: -o-linear-gradient(top, #063636 0%, #164e4e 21%, #286161 55%, #3f7575 79%, #648f8f 99%, #648f8f 100%);
+  background: -ms-linear-gradient(top, #063636 0%, #164e4e 21%, #286161 55%, #3f7575 79%, #648f8f 99%, #648f8f 100%);
+  background: linear-gradient(to bottom, #063636 0%, #164e4e 21%, #286161 55%, #3f7575 79%, #648f8f 99%, #648f8f 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#063636', endColorstr='#648f8f', GradientType=0 ); }
 
 div.content {
   width: 80%;
-  height: 100%;
-  display: flex; }
+  height: auto; }
 
 @media screen and (max-width: 640px) {
-  div.content {
-    justify-content: center; } }
+  section.main--form {
+    max-width: 60%; }
+
+  #bgvid {
+    display: none; } }
+@media screen and (max-width: 320px) {
+  form {
+    max-width: 80%; } }
 header {
   width: 100%;
   height: 15%;
@@ -32,58 +44,75 @@ header {
     justify-content: flex-start;
     align-items: center; }
   header article {
-    width: 33.3333333333%; }
+    width: auto; }
+    header article svg {
+      margin-top: 10px;
+      width: 60%;
+      height: 60%; }
 
 section.main--content_1 {
   width: 100%;
-  height: 50%;
+  min-height: 50%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center; }
 
 section.main--form {
-  height: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 2px 2px 10px black; }
+  align-items: flex-start; }
   section.main--form form {
-    height: 100%;
+    position: absolute;
+    height: auto;
+    min-height: 50vh;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px black;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: stretch;
     align-items: center; }
     section.main--form form article.form-files-section {
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
       align-items: center;
-      height: 40%;
+      height: auto;
       border-bottom: 1px solid #A28243; }
-      section.main--form form article.form-files-section div {
+      section.main--form form article.form-files-section div#addFileField {
         position: relative;
         display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
         align-items: center;
-        height: 40px;
+        height: auto;
+        min-height: 35px;
         width: 80%;
-        margin-bottom: 10px; }
-        section.main--form form article.form-files-section div img {
-          width: 40px;
-          position: absolute; }
-        section.main--form form article.form-files-section div p {
+        margin-bottom: 10px;
+        margin-top: 10px; }
+        section.main--form form article.form-files-section div#addFileField img {
+          width: 35px;
           position: absolute;
-          right: 0; }
+          left: 0;
+          box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+          border-radius: 20px; }
+          section.main--form form article.form-files-section div#addFileField img:hover {
+            transform: rotate(90deg); }
+        section.main--form form article.form-files-section div#addFileField p.buttonMask {
+          position: absolute;
+          right: 0;
+          bottom: -10px; }
     section.main--form form article.form-info-section {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
       align-items: flex-start;
-      height: 45%;
-      margin-top: 10px; }
+      min-height: 25vh;
+      margin-top: auto; }
       section.main--form form article.form-info-section textarea {
         width: 100%;
         height: 40%;
@@ -91,17 +120,67 @@ section.main--form {
         border-bottom: 1px solid #A28243; }
     section.main--form form p.submit {
       height: 15%;
-      margin: 0px;
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center; }
       section.main--form form p.submit input {
-        background: #d40000;
+        background: #0D1B3D;
+        color: white;
         border: none;
         padding: 7px;
-        border-radius: 10px;
-        font-weight: 700; }
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 20px;
+        font-weight: 700;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.6);
+        letter-spacing: 0.15em; }
+
+div#addedFilesField {
+  width: 80%;
+  height: auto; }
+
+article .addedFileBox {
+  margin: 0px;
+  margin-top: 5px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end; }
+  article .addedFileBox h6 {
+    text-align: right;
+    margin: 0px;
+    font-size: 0.8em; }
+  article .addedFileBox div.addedFileInfos {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 0.6em;
+    width: 100%;
+    color: #3F7575; }
+    article .addedFileBox div.addedFileInfos p {
+      width: 25%;
+      margin: 0px;
+      text-align: right;
+      border-bottom: 1px solid #7482A0; }
+    article .addedFileBox div.addedFileInfos p.emptyElt {
+      width: 50%;
+      border: none; }
+      article .addedFileBox div.addedFileInfos p.emptyElt img {
+        width: 15px; }
+
+p.totalSizeBox {
+  width: 80%;
+  text-align: right;
+  margin: 0;
+  font-size: 0.6em;
+  margin-top: 2px;
+  font-style: italic; }
+
+span#totalSize {
+  color: #648F8F; }
 
 input[type=email] {
   background: white;
@@ -111,6 +190,112 @@ input[type=email] {
 
 input[type=file] {
   opacity: 0;
-  width: 100%; }
+  width: 100%;
+  height: 100%;
+  z-index: 10; }
+
+video#bgvid {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  background: #286161;
+  background: -moz-linear-gradient(top, #063636 0%, #164e4e 21%, #286161 55%, #3f7575 79%, #648f8f 99%, #648f8f 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, #063636), color-stop(21%, #164e4e), color-stop(55%, #286161), color-stop(79%, #3f7575), color-stop(99%, #648f8f), color-stop(100%, #648f8f));
+  background: -webkit-linear-gradient(top, #063636 0%, #164e4e 21%, #286161 55%, #3f7575 79%, #648f8f 99%, #648f8f 100%);
+  background: -o-linear-gradient(top, #063636 0%, #164e4e 21%, #286161 55%, #3f7575 79%, #648f8f 99%, #648f8f 100%);
+  background: -ms-linear-gradient(top, #063636 0%, #164e4e 21%, #286161 55%, #3f7575 79%, #648f8f 99%, #648f8f 100%);
+  background: linear-gradient(to bottom, #063636 0%, #164e4e 21%, #286161 55%, #3f7575 79%, #648f8f 99%, #648f8f 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#063636', endColorstr='#648f8f', GradientType=0 );
+  background-size: cover; }
+
+section.dwldMainBox {
+  width: 100%;
+  max-width: 285px;
+  height: auto;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center; }
+
+article.dwldIntroBox {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 2px dotted #648F8F; }
+  article.dwldIntroBox h5 {
+    margin: 0px;
+    font-size: 1.2em;
+    color: #33456C; }
+  article.dwldIntroBox div.imgDwldIntro {
+    width: 100px;
+    height: 100px; }
+
+article.dwldFileBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  border-bottom: 1px solid #A28243; }
+  article.dwldFileBox div.dwldInfoBox {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    article.dwldFileBox div.dwldInfoBox h6.dwldFileName {
+      width: 100%;
+      margin: 0px;
+      margin-right: 40%;
+      font-size: 0.8em;
+      color: #000000;
+      text-align: right;
+      font-family: "Open Sans", sans-serif; }
+    article.dwldFileBox div.dwldInfoBox div.dwldFileInfos {
+      width: 100%;
+      margin-right: 40%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center; }
+      article.dwldFileBox div.dwldInfoBox div.dwldFileInfos p {
+        margin: 0px;
+        font-size: 0.6em;
+        margin-left: 10px;
+        color: #3F7575; }
+
+p.dwldFileButton {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0px; }
+  p.dwldFileButton svg {
+    width: 30px;
+    height: 30px;
+    display: block;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    transform: rotate(90deg);
+    transition: all 0.3s linear; }
+    p.dwldFileButton svg:hover {
+      transform: rotate(0deg); }
+    p.dwldFileButton svg:active {
+      transform: scale(1.2); }
+
+span.redColor {
+  color: #d40000; }
 
 /*# sourceMappingURL=style.css.map */
