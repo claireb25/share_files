@@ -123,14 +123,9 @@ else
     "message" => $_POST['message'],
     "file_name" => $_FILES['file_name']
     );
+
+}
+
+
+
 } ;
-
-
-// require_once 'vendor/autoload.php';
-
-// $loader = new Twig_Loader_Filesystem('views');
-// $twig = new Twig_Environment($loader, array(
-//     'cache'=> false
-// ));
-// $template = $twig->load('homepage.html.twig');
-// echo $template->render(array('test'=>$test));
