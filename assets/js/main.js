@@ -19,13 +19,26 @@ function inputFileGenerator(){
 	inputFieldFragment.appendChild(inputElt);
 	return inputFieldFragment;
 }
+function newElt(type, className = '', inner = ''){
+	let elem = document.createElement(type);
+	elem.classList.add(className);
+	elem.innerHTML = inner;
+	return elem;
+}
 function addedFileLayout(name, size, type){
 	let newFileElt = document.createDocumentFragment();
-	let pElt = document.createElement('p');
-	let pContent = name + '  ' + type + '  ' + Math.round(size / 1024) + "ko";
-	pElt.textContent = pContent;
-	newFileElt.appendChild(pElt);
-	addedFilesElt.appendChild(newFileElt);
+	let artElt = newElt('article', 'addedFileBox');
+	let titleElt = newElt('h6', 'addedFileName', name);
+	artElt.appendChild(titleElt);
+	let divElt = newElt('div', 'addedFileInfos');
+	divElt.appendChild(newElt('p', 'emptyElt'));
+	type = type.split('/');
+	type = type[1];
+	divElt.appendChild(newElt('p', 'addedFileType', type));
+	divElt.appendChild(newElt('p', 'addedFileSize', Math.round(size / 1024) + "ko"));
+	artElt.appendChild(divElt);
+	newFileElt.appendChild(artElt);
+	return newFileElt;
 }
 //
 function computeAddedFile(size){
@@ -47,7 +60,8 @@ function inputFieldEvent(event){
 	if (computeAddedFile(fileSize)){
 		document.querySelector('#totalSize').textContent = "";
 		document.querySelector('#totalSize').textContent = Math.round(totalUploadSize / 1024);
-		addedFileLayout(fileName, fileSize, fileType);
+		let newFile = addedFileLayout(fileName, fileSize, fileType);
+		addedFilesElt.appendChild(newFile);
 		parentElt.insertBefore(inputFieldFragment, fileInput);
 		fileInput.style.display = "none";
 		fileInput.classList.toggle("activeInputFile");

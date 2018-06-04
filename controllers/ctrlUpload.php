@@ -39,10 +39,10 @@ if (isset($_POST['sender_email'])&& !empty($_POST['sender_email'])
                         // var_dump($file_size);
                         // var_dump($file_name);
                         // var_dump($temp_name);
+
                         $import = move_uploaded_file($temp_name, $target_dir.'/'.$file_name);
                         File::insertFile($file_name, $file_size, $id_user);
                     };
-                   
                      
                     $to      = $receiver_email;
                     $subject = $sender_email . " vous a envoyé des fichiers via Share Files";
@@ -89,7 +89,10 @@ else
     "message" => $_POST['message'],
     "file_name" => $_FILES['file_name']
     );
+}
+
 };
+
 
 // require_once 'vendor/autoload.php';
 
